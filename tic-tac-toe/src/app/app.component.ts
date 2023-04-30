@@ -9,8 +9,10 @@ import { UserServiceService } from './services/user-service.service';
 export class AppComponent {
   title = 'tic-tac-toe';
   users: any = [];
-  constructor(private UserServiceService: UserServiceService) {
-    this.users = this.UserServiceService.getUsers();
+  constructor(private userServiceService: UserServiceService) {
+    this.userServiceService.getUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 
   get usersExist() {
