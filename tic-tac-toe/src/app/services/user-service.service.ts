@@ -28,4 +28,16 @@ export class UserServiceService {
     let secondUserSymbol = this.symbols.find((x) => x !== firstUserSymbol);
     this.userSymbols[this.users[1]] = secondUserSymbol;
   }
+
+  getUsersWithSymbol(index: number) {
+    let user = this.users[index];
+    let userSymbol = this.userSymbols[user];
+
+    let userData = {
+      userName: user,
+      symbol: userSymbol,
+    };
+
+    return userData;
+  }
 }
