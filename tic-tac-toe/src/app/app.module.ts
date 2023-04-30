@@ -5,11 +5,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TicTacToeGridComponent } from './tic-tac-toe-grid/tic-tac-toe-grid.component';
 import { CellComponent } from './tic-tac-toe-grid/cell/cell.component';
-import { UsersComponent } from './tic-tac-toe-grid/users/users.component';
+import { UsersComponent } from './users/users.component';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [AppComponent, TicTacToeGridComponent, CellComponent, UsersComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    TicTacToeGridComponent,
+    CellComponent,
+    UsersComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatCardModule,
+    MatButtonModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

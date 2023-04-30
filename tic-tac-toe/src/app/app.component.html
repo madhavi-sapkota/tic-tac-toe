@@ -1,1 +1,2 @@
-<app-tic-tac-toe-grid></app-tic-tac-toe-grid>
+<app-tic-tac-toe-grid *ngIf="usersExist"></app-tic-tac-toe-grid>
+<app-users *ngIf="!usersExist"></app-users>
