@@ -1,0 +1,16 @@
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.grid {
+  display: flex;
+}
+.middle-grid {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+.middle-cell {
+  border-left: 1px solid;
+  border-right: 1px solid;
+}
