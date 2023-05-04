@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     TicTacToeGridComponent,
     CellComponent,
     UsersComponent,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,

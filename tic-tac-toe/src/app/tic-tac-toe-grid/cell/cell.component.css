@@ -6,5 +6,9 @@
   align-items: center;
   justify-content: center;
 }
+.cell:hover {
+  background-color: bisque;
+  cursor: pointer;
+}
 .cell-content {
 }

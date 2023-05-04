@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+.first {
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.second {
+  margin-right: 10px;
+  padding-right: 10px;
+}

@@ -8,6 +8,7 @@ export class UserServiceService {
   constructor() {}
   private users: any[] = [];
   private userSymbols: any = {};
+  private nextSymbol: string = 'X';
 
   symbols = ['X', 'O'];
 
@@ -22,11 +23,11 @@ export class UserServiceService {
     });
 
     // first user
-    let firstUserSymbol = this.symbols[Math.floor(Math.random() * 2)];
-    this.userSymbols[this.users[0]] = firstUserSymbol;
+    let firstUserSymbol = this.symbols[Math.floor(Math.random() * 2)]; // to assign randomly 0 or 1 as index of symbols
+    this.userSymbols[this.users[0]] = firstUserSymbol; // symbol for user at index 0
     // second user
     let secondUserSymbol = this.symbols.find((x) => x !== firstUserSymbol);
-    this.userSymbols[this.users[1]] = secondUserSymbol;
+    this.userSymbols[this.users[1]] = secondUserSymbol; // symbol for user at index 1
   }
 
   getUsersWithSymbol(index: number) {
@@ -39,5 +40,13 @@ export class UserServiceService {
     };
 
     return userData;
+  }
+
+  getNextSymbol() {
+    return this.nextSymbol;
+  }
+
+  setNextSymbol() {
+    this.nextSymbol = this.nextSymbol === 'X' ? 'O' : 'X';
   }
 }
