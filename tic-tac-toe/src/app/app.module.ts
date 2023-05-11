@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PlayerComponent } from './player/player.component';
+import { RestartComponent } from './tic-tac-toe-grid/restart/restart.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PlayerComponent } from './player/player.component';
     CellComponent,
     UsersComponent,
     PlayerComponent,
+    RestartComponent,
   ],
   imports: [
     BrowserModule,

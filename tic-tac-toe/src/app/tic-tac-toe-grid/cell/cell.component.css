@@ -1,4 +1,5 @@
-.cell {
+.cell,
+.cell-disabled {
   background-color: orange;
   height: 75px;
   width: 75px;
@@ -10,5 +11,29 @@
   background-color: bisque;
   cursor: pointer;
 }
-.cell-content {
+
+.cell-disabled:hover {
+  cursor: not-allowed;
+}
+.green {
+  height: 75px;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+}
+.green:hover {
+  cursor: not-allowed;
+}
+.winning-disabled {
+  background-color: orange;
+  height: 75px;
+  width: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.winning-disabled:hover {
+  cursor: not-allowed;
 }

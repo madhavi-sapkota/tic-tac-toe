@@ -1,5 +1,18 @@
-<div class="cell" (click)="onCellClicked()">
-  <div class="cell-content">{{ cellValue }}</div>
+<div>
+  <div
+    (click)="onCellClicked()"
+    [ngClass]="
+      amIWinningIndex
+        ? 'green'
+        : grid[Index] !== ''
+        ? 'cell-disabled'
+        : gameOver
+        ? 'winning-disabled'
+        : 'cell'
+    "
+  >
+    <div class="cell-content">{{ grid[Index] }}</div>
+  </div>
 </div>
 
 <!-- this is the start of the application - creating a cell in a grid -->
