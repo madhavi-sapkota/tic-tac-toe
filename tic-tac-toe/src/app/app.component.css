@@ -8,4 +8,12 @@
   margin-left: 10px;
   padding-left: 10px;
   min-width: 500px;
+  text-align: center;
+}
+.scores {
+  margin-left: 135px;
+}
+.user-detail {
+  margin-block: 100px;
+  text-align: center;
 }

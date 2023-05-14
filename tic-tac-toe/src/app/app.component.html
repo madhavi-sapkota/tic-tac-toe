@@ -9,4 +9,16 @@
     <app-player *ngIf="usersExist" [userIndex]="1"></app-player>
   </div>
 </div>
-<app-users *ngIf="!usersExist"></app-users>
+<div>
+  <div>
+    <app-score-header *ngIf="usersExist"></app-score-header>
+  </div>
+  <div class="scores">
+    <div>
+      <app-score-board *ngIf="usersExist"></app-score-board>
+    </div>
+  </div>
+</div>
+<div class="user-detail">
+  <app-users *ngIf="!usersExist"></app-users>
+</div>

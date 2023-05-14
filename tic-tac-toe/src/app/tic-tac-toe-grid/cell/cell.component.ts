@@ -36,6 +36,12 @@ export class CellComponent {
     if (this.grid[this.Index] === '' && !this.gameOver) {
       let newValue = this.userServiceService.getNextSymbol();
       this.gameService.setGridValue(this.Index, newValue);
+      if (this.gameOver) {
+        let currentSymbol = this.grid[this.Index];
+        let currentUser =
+          this.userServiceService.getUserNameBySymbol(currentSymbol);
+        this.userServiceService.addUserScores(currentUser);
+      }
       this.userServiceService.setNextSymbol();
     }
   }

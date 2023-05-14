@@ -1,4 +1,4 @@
-<div class="player">
-  <h2>{{ player.userName }} - {{ player.symbol }}</h2>
-  <p *ngIf="isMyTurn">Your Turn</p>
+<div>
+  <h2 [ngClass]="isMyTurn ? 'player-turn' : ''">{{ player.userName }}</h2>
+  <!-- <p *ngIf="isMyTurn">Your Turn</p> -->
 </div>
