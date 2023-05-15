@@ -10,6 +10,8 @@ import { GameService } from '../services/game.service';
 export class PlayerComponent implements OnInit {
   player: any;
   winningIndexes: any[] = [];
+  usersScores: any;
+
   @Input() userIndex: any;
   constructor(
     private userServiceService: UserServiceService,
@@ -17,6 +19,9 @@ export class PlayerComponent implements OnInit {
   ) {
     this.gameService.getWinningIndexes().subscribe((value) => {
       this.winningIndexes = value;
+    });
+    this.userServiceService.getUserWithScores.subscribe((value) => {
+      this.usersScores = value;
     });
   }
 

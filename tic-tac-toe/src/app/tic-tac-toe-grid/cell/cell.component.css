@@ -37,3 +37,19 @@
 .winning-disabled:hover {
   cursor: not-allowed;
 }
+
+.cell-content {
+  display: inline-block;
+  font-size: 20px;
+  transform: scale(0);
+  animation: popup 0.5s forwards;
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

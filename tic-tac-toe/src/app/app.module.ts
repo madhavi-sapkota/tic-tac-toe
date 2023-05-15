@@ -13,8 +13,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PlayerComponent } from './player/player.component';
 import { RestartComponent } from './restart/restart.component';
-import { ScoreBoardComponent } from './score-board/score-board.component';
-import { ScoreHeaderComponent } from './score-header/score-header.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +22,6 @@ import { ScoreHeaderComponent } from './score-header/score-header.component';
     UsersComponent,
     PlayerComponent,
     RestartComponent,
-    ScoreBoardComponent,
-    ScoreHeaderComponent,
   ],
   imports: [
     BrowserModule,

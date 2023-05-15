@@ -1,4 +1,6 @@
 <div>
-  <h2 [ngClass]="isMyTurn ? 'player-turn' : ''">{{ player.userName }}</h2>
+  <h2 [ngClass]="isMyTurn ? 'player-turn' : ''">
+    {{ player.userName }} --- {{ usersScores[player.userName] }}
+  </h2>
   <!-- <p *ngIf="isMyTurn">Your Turn</p> -->
 </div>
