@@ -8,25 +8,26 @@ import { GameService } from '../services/game.service';
   styleUrls: ['./player.component.css'],
 })
 export class PlayerComponent implements OnInit {
-  player: any;
   winningIndexes: any[] = [];
-  usersScores: any;
 
   @Input() userIndex: any;
   constructor(
     private userServiceService: UserServiceService,
     private gameService: GameService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.gameService.getWinningIndexes().subscribe((value) => {
       this.winningIndexes = value;
     });
-    this.userServiceService.getUserWithScores.subscribe((value) => {
-      this.usersScores = value;
-    });
   }
 
-  ngOnInit() {
-    this.player = this.userServiceService.getUsersWithSymbol(this.userIndex);
+  get player() {
+    return this.userServiceService.getUsersWithSymbol(this.userIndex);
+  }
+
+  get score() {
+    return this.userServiceService.getScoreByUser(this.player.userName);
   }
 
   get isMyTurn() {

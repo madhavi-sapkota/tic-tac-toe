@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { sendMessage } from '../socket-io';
+
 const winnersCollection = [
   [0, 1, 2],
   [3, 4, 5],
@@ -17,38 +19,38 @@ const winnersCollection = [
 export class GameService {
   constructor() {}
 
-  grid: any[] = ['', '', '', '', '', '', '', '', ''];
-  winningIndexes: any = [];
+  static grid: any[] = ['', '', '', '', '', '', '', '', ''];
+  static winningIndexes: any = [];
 
+  gridUpdated(grid: any[]) {
+    for (let i = 0; i < grid.length; i++) {
+      GameService.grid[i] = grid[i];
+    }
+  }
+
+  winningIndexesUpdated(winningIndexes: any[]) {
+    for (let i = 0; i < winningIndexes.length; i++) {
+      GameService.winningIndexes.push(winningIndexes[i]);
+    }
+    if (winningIndexes.length === 0) {
+      while (GameService.winningIndexes.length > 0) {
+        GameService.winningIndexes.pop();
+      }
+    }
+  }
   getGridValue(): Observable<any[]> {
-    return of(this.grid);
+    return of(GameService.grid);
   }
 
   getWinningIndexes(): Observable<any[]> {
-    return of(this.winningIndexes);
+    return of(GameService.winningIndexes);
   }
 
   setGridValue(index: any, value: any) {
-    this.grid[index] = value;
-    winnersCollection.forEach((winners) => {
-      if (
-        this.grid[winners[0]] === this.grid[winners[1]] &&
-        this.grid[winners[1]] === this.grid[winners[2]] &&
-        this.grid[winners[0]] !== ''
-      ) {
-        winners.forEach((winner) => {
-          this.winningIndexes.push(winner);
-        });
-      }
-    });
+    sendMessage('setGridValue', { index: index, value: value });
   }
 
   resetGame() {
-    while (this.winningIndexes.length > 0) {
-      this.winningIndexes.pop();
-    }
-    for (let i = 0; i < this.grid.length; i++) {
-      this.grid[i] = '';
-    }
+    sendMessage('resetGame', null);
   }
 }

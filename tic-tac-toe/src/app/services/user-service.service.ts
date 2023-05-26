@@ -1,75 +1,68 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, BehaviorSubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { sendMessage } from '../socket-io';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserServiceService {
   constructor() {}
-  private users: any[] = [];
-  private userSymbols: any = {};
-  private nextSymbol: string = 'X';
-  private userScores: any = {};
+
+  private static users: any[] = [];
+  private static userSymbols: any = {};
+  private static userScores: any = {};
+  private static nextSymbol: string = 'X';
 
   symbols = ['X', 'O'];
 
-  // make it observable
+  // observables
   getUsers(): Observable<any[]> {
-    return of(this.users);
+    return of(UserServiceService.users);
   }
-
-  getUserWithScores = new BehaviorSubject<any>(this.userScores);
 
   addUsers(userInfo: any[]) {
-    userInfo.forEach((user: any) => {
-      this.users.push(user);
+    sendMessage('usersAdded', userInfo);
+  }
+
+  // handlers
+  usersUpdated(users: any[]) {
+    users.forEach((user) => {
+      UserServiceService.users.push(user);
     });
-
-    // first user
-    let firstUserSymbol = this.symbols[Math.floor(Math.random() * 2)]; // to assign randomly 0 or 1 as index of symbols
-    this.userSymbols[this.users[0]] = firstUserSymbol; // symbol for user at index 0
-    this.userScores[this.users[0]] = 0;
-    // second user
-    let secondUserSymbol = this.symbols.find((x) => x !== firstUserSymbol);
-    this.userSymbols[this.users[1]] = secondUserSymbol; // symbol for user at index 1
-    this.userScores[this.users[1]] = 0;
+  }
+  userSymbolUpdated(userSymbols: any) {
+    UserServiceService.userSymbols = userSymbols;
+  }
+  userScoresUpdated(userScores: any) {
+    UserServiceService.userScores = userScores;
+  }
+  nextSymbolUpdated(nextSymbol: string) {
+    UserServiceService.nextSymbol = nextSymbol;
   }
 
-  addUserScores(user: any) {
-    let userScores = this.userScores;
-    let userName = user;
-    let newValue = userScores[userName] + 1;
-    userScores[userName] = newValue;
-    this.getUserWithScores.next(userScores);
-  }
-
+  // getters
   getUserNameBySymbol(symbol: string) {
-    let userNames = Object.keys(this.userSymbols);
+    let userNames = Object.keys(UserServiceService.userSymbols);
     for (let i = 0; i < userNames.length; i++) {
-      if (this.userSymbols[userNames[i]] === symbol) {
+      if (UserServiceService.userSymbols[userNames[i]] === symbol) {
         return userNames[i];
       }
     }
     return null;
   }
-
   getUsersWithSymbol(index: number) {
-    let user = this.users[index];
-    let userSymbol = this.userSymbols[user];
-
+    let user = UserServiceService.users[index];
+    let userSymbol = UserServiceService.userSymbols[user];
     let userData = {
       userName: user,
       symbol: userSymbol,
     };
-
     return userData;
   }
-
-  getNextSymbol() {
-    return this.nextSymbol;
+  getScoreByUser(user: string) {
+    return UserServiceService.userScores[user];
   }
-
-  setNextSymbol() {
-    this.nextSymbol = this.nextSymbol === 'X' ? 'O' : 'X';
+  getNextSymbol() {
+    return UserServiceService.nextSymbol;
   }
 }

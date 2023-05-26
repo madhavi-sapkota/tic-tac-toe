@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserServiceService } from './services/user-service.service';
+import { connect } from './socket-io';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ export class AppComponent {
   title = 'tic-tac-toe';
   users: any = [];
   constructor(private userServiceService: UserServiceService) {
+    connect();
     this.userServiceService.getUsers().subscribe((data) => {
       this.users = data;
     });
