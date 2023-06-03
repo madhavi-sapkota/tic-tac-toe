@@ -1,13 +1,14 @@
 <div>
   <div
+    class="cell-standard"
     (click)="onCellClicked()"
     [ngClass]="
       amIWinningIndex
-        ? 'green'
+        ? 'winning-cell'
         : grid[Index] !== ''
-        ? 'cell-disabled'
+        ? 'cell-with-value'
         : gameOver
-        ? 'winning-disabled'
+        ? 'game-over'
         : 'cell'
     "
   >

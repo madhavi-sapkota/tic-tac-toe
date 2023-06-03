@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { sendMessage } from '../socket-io';
+import { HttpClient } from '@angular/common/http';
+
+const API_BASE_URL = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserServiceService {
-  constructor() {}
+  constructor(private http: HttpClient | null) {}
 
   private static users: any[] = [];
   private static userSymbols: any = {};
@@ -64,5 +67,37 @@ export class UserServiceService {
   }
   getNextSymbol() {
     return UserServiceService.nextSymbol;
+  }
+
+  getUserFromApi() {
+    return this.http?.get<any[]>(`${API_BASE_URL}/users`).subscribe((users) => {
+      users.forEach((user) => {
+        UserServiceService.users.push(user);
+      });
+    });
+  }
+
+  getUserSymbolFromApi() {
+    return this.http
+      ?.get<any[]>(`${API_BASE_URL}/user-symbols`)
+      .subscribe((userSymbols) => {
+        UserServiceService.userSymbols = userSymbols;
+      });
+  }
+
+  getNextSymbolFromApi() {
+    return this.http
+      ?.get<string>(`${API_BASE_URL}/next-symbol`)
+      .subscribe((nextSymbols) => {
+        UserServiceService.nextSymbol = nextSymbols;
+      });
+  }
+
+  getUserScoresFromApi() {
+    return this.http
+      ?.get<any>(`${API_BASE_URL}/user-scores`)
+      .subscribe((userScores) => {
+        UserServiceService.userScores = userScores;
+      });
   }
 }

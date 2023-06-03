@@ -1,40 +1,33 @@
-.cell,
-.cell-disabled {
-  background-color: orange;
+.cell-standard {
   height: 75px;
   width: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cell,
+.cell-with-value {
+  background-color: lightblue;
 }
 .cell:hover {
   background-color: bisque;
   cursor: pointer;
 }
 
-.cell-disabled:hover {
+.cell-with-value:hover {
   cursor: not-allowed;
 }
-.green {
-  height: 75px;
-  width: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.winning-cell {
   background-color: green;
 }
-.green:hover {
+.winning-cell:hover {
   cursor: not-allowed;
 }
-.winning-disabled {
-  background-color: orange;
-  height: 75px;
-  width: 75px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.game-over {
+  background-color: lightblue;
 }
-.winning-disabled:hover {
+.game-over:hover {
   cursor: not-allowed;
 }
 

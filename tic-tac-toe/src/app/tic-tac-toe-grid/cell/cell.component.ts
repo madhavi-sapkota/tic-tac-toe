@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { GameService } from 'src/app/services/game.service';
 

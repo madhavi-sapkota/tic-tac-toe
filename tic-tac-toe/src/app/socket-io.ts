@@ -2,8 +2,8 @@ import { Socket, io } from 'socket.io-client';
 import { UserServiceService } from './services/user-service.service';
 import { GameService } from './services/game.service';
 
-let userService = new UserServiceService();
-let gameService = new GameService();
+let userService = new UserServiceService(null);
+let gameService = new GameService(null);
 
 let socket: Socket;
 

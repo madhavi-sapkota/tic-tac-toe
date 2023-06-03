@@ -20,6 +20,9 @@ export class PlayerComponent implements OnInit {
     this.gameService.getWinningIndexes().subscribe((value) => {
       this.winningIndexes = value;
     });
+    this.userServiceService.getUserSymbolFromApi();
+    this.userServiceService.getNextSymbolFromApi();
+    this.userServiceService.getUserScoresFromApi();
   }
 
   get player() {

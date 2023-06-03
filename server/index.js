@@ -1,5 +1,9 @@
-const server = require("http").createServer();
+const express = require("express");
+const app = express();
+const server = require("http").createServer(app);
 const port = 3000;
+const cors = require("cors");
+app.use(cors());
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -91,5 +95,34 @@ io.on("connection", (client) => {
     console.log("A user disconnected");
   });
 });
+
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
+app.get("/users", (req, res) => {
+  res.send(users);
+});
+
+app.get("/user-symbols", (req, res) => {
+  res.send(userSymbols);
+});
+
+app.get("/next-symbol", (req, res) => {
+  res.send(JSON.stringify(nextSymbol));
+});
+
+app.get("/user-scores", (req, res) => {
+  res.send(userScores);
+});
+
+app.get("/grid", (req, res) => {
+  res.send(grid);
+});
+
+app.get("/winning-indexes", (req, res) => {
+  res.send(winningIndexes);
+});
+
 server.listen(port);
 console.log(`Server Running on Port ${port}`);

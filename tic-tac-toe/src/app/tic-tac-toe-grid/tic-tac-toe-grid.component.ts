@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../services/user-service.service';
 import { GameService } from '../services/game.service';
 @Component({
@@ -6,9 +6,14 @@ import { GameService } from '../services/game.service';
   templateUrl: './tic-tac-toe-grid.component.html',
   styleUrls: ['./tic-tac-toe-grid.component.css'],
 })
-export class TicTacToeGridComponent {
+export class TicTacToeGridComponent implements OnInit {
   constructor(
     private userServiceService: UserServiceService,
     private gameService: GameService
   ) {}
+
+  ngOnInit(): void {
+    this.gameService.getGridFromApi();
+    this.gameService.getWinningIndexesFromApi();
+  }
 }

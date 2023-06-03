@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { sendMessage } from '../socket-io';
+import { HttpClient } from '@angular/common/http';
+
+const API_BASE_URL = 'http://localhost:3000';
 
 const winnersCollection = [
   [0, 1, 2],
@@ -17,7 +20,7 @@ const winnersCollection = [
   providedIn: 'root',
 })
 export class GameService {
-  constructor() {}
+  constructor(private http: HttpClient | null) {}
 
   static grid: any[] = ['', '', '', '', '', '', '', '', ''];
   static winningIndexes: any = [];
@@ -52,5 +55,25 @@ export class GameService {
 
   resetGame() {
     sendMessage('resetGame', null);
+  }
+
+  getGridFromApi() {
+    return this.http?.get<any[]>(`${API_BASE_URL}/grid`).subscribe((grid) => {
+      for (let i = 0; i < grid.length; i++) {
+        GameService.grid[i] = grid[i];
+      }
+    });
+  }
+
+  getWinningIndexesFromApi() {
+    return this.http
+      ?.get<any[]>(`${API_BASE_URL}/winning-indexes`)
+      .subscribe((winningIndexes) => {
+        if (GameService.winningIndexes.length === 0) {
+          winningIndexes.forEach((winningIndex) => {
+            GameService.winningIndexes.push(winningIndex);
+          });
+        }
+      });
   }
 }
