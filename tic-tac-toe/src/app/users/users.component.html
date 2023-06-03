@@ -1,11 +1,7 @@
 <mat-form-field class="example-full-width">
-  <mat-label>First User</mat-label>
-  <input matInput placeholder="first user" [(ngModel)]="users[0]" />
+  <mat-label>Enter username</mat-label>
+  <input matInput placeholder="Enter user name" [(ngModel)]="user" />
 </mat-form-field>
 <br />
-<mat-form-field class="example-full-width">
-  <mat-label>Second User</mat-label>
-  <input matInput placeholder="first user" [(ngModel)]="users[1]" />
-</mat-form-field>
 <br />
 <button mat-raised-button color="primary" (click)="onClick()">Enter</button>

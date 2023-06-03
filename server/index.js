@@ -33,19 +33,15 @@ const winnersCollection = [
 io.on("connection", (client) => {
   console.log("A user connected");
 
-  client.on("usersAdded", (userInfo) => {
-    if (users.length === 0) {
-      userInfo.forEach((user) => {
-        users.push(user);
-      });
-      // first user
-      let firstUserSymbol = symbols[Math.floor(Math.random() * 2)]; // to assign randomly 0 or 1 as index of symbols
-      userSymbols[users[0]] = firstUserSymbol; // symbol for user at index 0
-      userScores[users[0]] = 0;
-      // second user
-      let secondUserSymbol = symbols.find((x) => x !== firstUserSymbol);
-      userSymbols[users[1]] = secondUserSymbol; // symbol for user at index 1
-      userScores[users[1]] = 0;
+  client.on("userAdded", (user) => {
+    if (users.length < 2) {
+      let userSymbol =
+        users.length === 0
+          ? symbols[Math.floor(Math.random() * 2)]
+          : symbols.find((x) => x !== userSymbols[users[0]]); // to assign randomly 0 or 1 as index of symbols
+      users.push(user);
+      userSymbols[user] = userSymbol; // symbol for user at index 0
+      userScores[user] = 0;
     }
 
     io.emit("usersUpdated", users);

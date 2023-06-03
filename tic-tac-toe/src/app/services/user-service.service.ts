@@ -23,14 +23,16 @@ export class UserServiceService {
     return of(UserServiceService.users);
   }
 
-  addUsers(userInfo: any[]) {
-    sendMessage('usersAdded', userInfo);
+  addUser(userInfo: string) {
+    sendMessage('userAdded', userInfo);
   }
 
   // handlers
   usersUpdated(users: any[]) {
     users.forEach((user) => {
-      UserServiceService.users.push(user);
+      if (!UserServiceService.users.includes(user)) {
+        UserServiceService.users.push(user);
+      }
     });
   }
   userSymbolUpdated(userSymbols: any) {

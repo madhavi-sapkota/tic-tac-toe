@@ -8,13 +8,13 @@ import { UserServiceService } from '../services/user-service.service';
 })
 export class UsersComponent implements OnInit {
   constructor(private UserServiceService: UserServiceService) {}
-  users = ['', ''];
+  user = '';
 
   ngOnInit(): void {
     this.UserServiceService.getUserFromApi();
   }
 
   onClick() {
-    this.UserServiceService.addUsers(this.users);
+    this.UserServiceService.addUser(this.user);
   }
 }
