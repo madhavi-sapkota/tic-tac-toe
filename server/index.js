@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
+const path = require("path");
+const fs = require("fs");
 const port = 3000;
 const cors = require("cors");
 app.use(cors());
@@ -9,6 +11,14 @@ const io = require("socket.io")(server, {
     origin: "*",
   },
 });
+
+const distPath = path.join(__dirname, "../tic-tac-toe/dist/tic-tac-toe");
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get("*", (req, res) => {
+    res.sendFile(`${distPath}/index.html`);
+  });
+}
 
 let users = [];
 let userSymbols = {};
@@ -90,10 +100,6 @@ io.on("connection", (client) => {
   client.on("disconnect", () => {
     console.log("A user disconnected");
   });
-});
-
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
 });
 
 app.get("/users", (req, res) => {
