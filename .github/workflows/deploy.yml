@@ -18,14 +18,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Navigate to tic-tac-toe (Angular application)
-        run: cd tic-tac-toe
-
-      - name: Where are we?
-        run: ls
-
-      - name: Install dependencies
-        run: npm install
-
       - name: Build Angular Package
-        run: npm run build
+        run: |
+          cd tic-tac-toe
+          npm install
+          npm run build
