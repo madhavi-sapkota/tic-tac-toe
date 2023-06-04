@@ -12,7 +12,7 @@ const io = require("socket.io")(server, {
   },
 });
 
-const distPath = path.join(__dirname, "../tic-tac-toe/dist/tic-tac-toe");
+const distPath = path.join(__dirname, "dist");
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   app.get("*", (req, res) => {
