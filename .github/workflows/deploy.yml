@@ -21,6 +21,9 @@ jobs:
       - name: Navigate to tic-tac-toe (Angular application)
         run: cd tic-tac-toe
 
+      - name: Where are we?
+        run: ls
+
       - name: Install dependencies
         run: npm install
 
