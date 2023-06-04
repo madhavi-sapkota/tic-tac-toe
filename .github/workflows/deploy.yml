@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: 18
 
-     - name: Navigate to tic-tac-toe (Angular application)
+      - name: Navigate to tic-tac-toe (Angular application)
         run: cd tic-tac-toe
 
-    - name: Install dependencies
+      - name: Install dependencies
         run: npm install
 
-    - name: Build Angular Package
+      - name: Build Angular Package
         run: npm run build
