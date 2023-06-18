@@ -1,9 +1,11 @@
 <div class="container">
-  <div class="first">
-    <app-player *ngIf="usersExist" [userIndex]="0"></app-player>
-  </div>
   <div>
     <app-tic-tac-toe-grid *ngIf="usersExist"></app-tic-tac-toe-grid>
+  </div>
+</div>
+<div class="players">
+  <div class="first">
+    <app-player *ngIf="usersExist" [userIndex]="0"></app-player>
   </div>
   <div class="second">
     <app-player *ngIf="usersExist" [userIndex]="1"></app-player>
