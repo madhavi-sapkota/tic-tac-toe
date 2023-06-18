@@ -1,6 +1,7 @@
 import { Socket, io } from 'socket.io-client';
 import { UserServiceService } from './services/user-service.service';
 import { GameService } from './services/game.service';
+import { serverUrl } from './urls';
 
 let userService = new UserServiceService(null);
 let gameService = new GameService(null);
@@ -8,8 +9,7 @@ let gameService = new GameService(null);
 let socket: Socket;
 
 const connect = () => {
-  ('https://play-tic-tac-toe.azurewebsites.net/');
-  socket = io('https://play-tic-tac-toe.azurewebsites.net');
+  socket = io(serverUrl);
 
   socket.on('usersUpdated', (data: any) => {
     userService.usersUpdated(data);

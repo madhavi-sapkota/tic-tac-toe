@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { sendMessage } from '../socket-io';
 import { HttpClient } from '@angular/common/http';
+import { serverUrl } from '../urls';
 
-const API_BASE_URL = 'https://play-tic-tac-toe.azurewebsites.net';
+const API_BASE_URL = serverUrl;
 
 const winnersCollection = [
   [0, 1, 2],

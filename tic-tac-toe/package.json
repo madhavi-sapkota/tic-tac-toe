@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && mkdir ../server/dist && cp ./dist/tic-tac-toe/* ../server/dist",
+    "build:dev": "ng build --configuration development && mkdir ../server/dist && cp ./dist/tic-tac-toe/* ../server/dist",
+    "build:prod": "ng build --configuration production && mkdir ../server/dist && cp ./dist/tic-tac-toe/* ../server/dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
