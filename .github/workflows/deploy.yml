@@ -28,6 +28,11 @@ jobs:
           npm install
           npm run build
 
+      - name: Build Server
+        run: |
+          cd server
+          npm install
+
       - name: upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
