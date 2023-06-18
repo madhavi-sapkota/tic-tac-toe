@@ -8,7 +8,8 @@ let gameService = new GameService(null);
 let socket: Socket;
 
 const connect = () => {
-  socket = io('http://localhost:3000');
+  ('https://play-tic-tac-toe.azurewebsites.net/');
+  socket = io('https://play-tic-tac-toe.azurewebsites.net');
 
   socket.on('usersUpdated', (data: any) => {
     userService.usersUpdated(data);

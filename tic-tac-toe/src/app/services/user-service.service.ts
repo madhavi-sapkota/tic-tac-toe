@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { sendMessage } from '../socket-io';
 import { HttpClient } from '@angular/common/http';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://play-tic-tac-toe.azurewebsites.net';
 
 @Injectable({
   providedIn: 'root',
