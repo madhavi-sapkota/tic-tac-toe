@@ -9,6 +9,6 @@ import { GameService } from 'src/app/services/game.service';
 export class RestartComponent {
   constructor(private gameService: GameService) {}
   onClick() {
-    this.gameService.resetGame();
+    this.gameService.restartGame();
   }
 }

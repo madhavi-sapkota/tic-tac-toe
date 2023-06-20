@@ -58,6 +58,10 @@ export class GameService {
     sendMessage('resetGame', null);
   }
 
+  restartGame() {
+    sendMessage('restartGame', null);
+  }
+
   getGridFromApi() {
     return this.http?.get<any[]>(`${API_BASE_URL}/grid`).subscribe((grid) => {
       for (let i = 0; i < grid.length; i++) {

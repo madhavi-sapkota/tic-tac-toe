@@ -14,6 +14,7 @@ const {
   getWinningIndexes,
   setGridValue,
   resetGame,
+  restartGame,
 } = require("./services/game-service");
 
 const cors = require("cors");
@@ -45,6 +46,16 @@ io.on("connection", (client) => {
 
   client.on("resetGame", () => {
     resetGame();
+
+    io.emit("gridUpdated", getGrid());
+    io.emit("winningIndexesUpdated", getWinningIndexes());
+    io.emit("userScoresUpdated", getUserScores());
+    io.emit("usersUpdated", getUsers());
+    io.emit("userSymbolUpdated", getUserSymbols());
+  });
+
+  client.on("restartGame", () => {
+    restartGame();
     io.emit("gridUpdated", getGrid());
     io.emit("winningIndexesUpdated", getWinningIndexes());
   });

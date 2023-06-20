@@ -54,11 +54,30 @@ function setGridValue(payload) {
   nextSymbol = nextSymbol === "X" ? "O" : "X";
 }
 
-function resetGame() {
+function restartGame() {
   winningIndexes = [];
   for (let i = 0; i < grid.length; i++) {
     grid[i] = "";
   }
+}
+
+function resetGame() {
+  winningIndexes = [];
+  userScores = {};
+  users = [];
+  userSymbols = {};
+  for (let i = 0; i < grid.length; i++) {
+    grid[i] = "";
+  }
+
+  console.log(
+    users,
+    userScores,
+    winningIndexes,
+    userSymbols,
+    grid,
+    "user hatyo?"
+  );
 }
 
 function getUsers() {
@@ -91,4 +110,5 @@ module.exports = {
   getWinningIndexes,
   setGridValue,
   resetGame,
+  restartGame,
 };

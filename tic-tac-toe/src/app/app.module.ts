@@ -14,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { PlayerComponent } from './player/player.component';
 import { RestartComponent } from './restart/restart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ResetGameComponent } from './reset-game/reset-game.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
     UsersComponent,
     PlayerComponent,
     RestartComponent,
+    ResetGameComponent,
   ],
   imports: [
     BrowserModule,
