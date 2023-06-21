@@ -20,6 +20,13 @@
   margin-block: 100px;
   text-align: center;
 }
+.message {
+  background-color: powderblue;
+  padding: 5px;
+  margin-left: 62px;
+  margin-right: 62px;
+  border-radius: 15px;
+}
 .players {
   margin: 0;
 

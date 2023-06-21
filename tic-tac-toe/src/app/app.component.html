@@ -14,4 +14,14 @@
 
 <div class="user-detail">
   <app-users *ngIf="!usersExist"></app-users>
+  <br />
+  <br />
+  <div *ngIf="!usersExist">
+    <div *ngIf="oneUserExists">
+      <p class="message">
+        The game session requires two players to start the game. Send the link
+        to the other player to play together!
+      </p>
+    </div>
+  </div>
 </div>

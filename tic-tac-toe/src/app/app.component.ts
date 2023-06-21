@@ -20,4 +20,8 @@ export class AppComponent {
   get usersExist() {
     return this.users.length === 2;
   }
+
+  oneUserExists() {
+    return this.users.length >= 1;
+  }
 }
